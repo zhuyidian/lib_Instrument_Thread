@@ -13,7 +13,7 @@ public class NativeThreadMonitor {
     private static final String TAG = "NativeThreadMonitor";
 
     static {
-        System.loadLibrary("native-lib");
+        System.loadLibrary("threadmonitor-lib");
 
         try {
             Class<?> threadGroupClass = Class.forName("java.lang.ThreadGroup");
