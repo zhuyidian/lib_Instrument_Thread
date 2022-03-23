@@ -1,0 +1,11 @@
+## This file must *NOT* be checked into Version Control Systems,
+# as it contains information specific to your local configuration.
+#
+# Location of the SDK. This is only used by Gradle.
+# For customization when using a Version Control System, please read the
+# header note.
+#Mon Mar 21 04:26:17 CST 2022
+sdk.dir=C\:\\Users\\Administrator\\AppData\\Local\\Android\\Sdk
+ndk.dir=C\:\\Users\\Administrator\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462
+cmake.dir=C\:\\Users\\Administrator\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404
+#cmake.dir=C\:\\Users\\Administrator\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459
