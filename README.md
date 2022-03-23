@@ -1,4 +1,4 @@
-# lib_Instrument_CrashLocal
+# lib_Instrument_Thread
 
 ## 1.使用
 * 1，初始化
@@ -19,4 +19,9 @@ classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.8'
 ```groovy
 apply plugin: 'android-aspectjx'
 implementation 'com.github.zhuyidian.lib_Instrument:excel:V1.1.8'
+```
+## 3.版本更新
+* V1.0.5
+```
+首次成功运行版本
 ```
