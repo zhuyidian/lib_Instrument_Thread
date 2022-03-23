@@ -1,0 +1,16 @@
+# thread
+/thread/.gradle/
+/thread/.idea/
+/thread/.svn/
+/thread/java_pid5600.hprof   
+/thread/java_pid8156.hprof 
+/thread/*.hprof 
+/thread/*.iml
+
+#app
+/thread/app/build/
+/thread/app/*.iml
+
+#thread
+/thread/thread/build/
+/thread/thread/*.iml
