@@ -1,16 +1,16 @@
-# thread
-/thread/.gradle/
-/thread/.idea/
-/thread/.svn/
-/thread/java_pid5600.hprof   
-/thread/java_pid8156.hprof 
-/thread/*.hprof 
-/thread/*.iml
+# ThreadMonitor
+/ThreadMonitor/.gradle/
+/ThreadMonitor/.idea/
+/ThreadMonitor/.svn/
+/ThreadMonitor/java_pid5600.hprof   
+/ThreadMonitor/java_pid8156.hprof 
+/ThreadMonitor/*.hprof 
+/ThreadMonitor/*.iml
 
 #app
-/thread/app/build/
-/thread/app/*.iml
+/ThreadMonitor/app/build/
+/ThreadMonitor/app/*.iml
 
 #thread
-/thread/thread/build/
-/thread/thread/*.iml
+/ThreadMonitor/thread/build/
+/ThreadMonitor/thread/*.iml
