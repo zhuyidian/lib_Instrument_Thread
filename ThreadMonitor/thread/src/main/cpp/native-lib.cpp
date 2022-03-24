@@ -1,12 +1,15 @@
 #include <jni.h>
 #include <string>
 #include <android/log.h>
+#include <unistd.h>
 #include "dlopen.h"
 #include "inlineHook.h"
 
 void *get_contented_monitor;
 void *get_lock_owner_thread_id;
 void *thread_create_call_back;
+
+#define THREAD_RUN_INFO_LENGTH 512
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_dunn_instrument_thread_NativeThreadMonitor_stringFromJNI(
@@ -109,13 +112,36 @@ Java_com_dunn_instrument_thread_NativeThreadMonitor_getCurrentThreadId(JNIEnv *e
 
 void* (*old_create_callback)(void*) = NULL;
 
+extern const char* getThreadRunInfo(){
+    // proc/pid/task/tid/stat
+    char *path = (char*)calloc(1, PATH_MAX);
+    char *thread_info = (char *)calloc(1, THREAD_RUN_INFO_LENGTH);
+    snprintf(path, PATH_MAX, "/proc/%d/task/%d/stat", getpid(), gettid());
+    FILE *commFile = NULL;
+    if(commFile = fopen(path, "r")){
+        fgets(thread_info, THREAD_RUN_INFO_LENGTH, commFile);
+        fclose(commFile);
+    }
+    if(thread_info){
+        int length = strlen(thread_info);
+        if(thread_info[length - 1] == '\n'){
+            thread_info[length - 1] = '\0';
+        }
+    }
+    free(path);
+    return thread_info;
+}
+
 void* new_create_callback(void* arg) {
     long startTime = time(NULL);
     void* result = old_create_callback(arg);
     long alive_time = time(NULL) - startTime;
     __android_log_print(ANDROID_LOG_ERROR, "TAG", "线程执行完毕，存活时间 -> %ldS",alive_time);
     // 获取 cpu 利用率，获取线程的名字，自己去折腾一下，网上也没有
-    // 获取线程的名字？Native 崩溃再复习一下
+    // 获取线程的名字？Native 崩溃再复习一下，有没有好的方案，网上是查不到的
+    const char* thread_info = getThreadRunInfo();
+    // cpu 的占用时间，线程占用时间/总时间，线程占用时间/进程的时间
+    __android_log_print(ANDROID_LOG_ERROR, "TAG", "thread info: %s", thread_info);
     return result;
 }
 
