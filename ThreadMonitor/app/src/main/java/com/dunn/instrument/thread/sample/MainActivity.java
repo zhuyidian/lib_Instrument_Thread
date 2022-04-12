@@ -70,7 +70,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         };
 
+        thread1.setName("test-thread1");
         thread1.start();
+        thread2.setName("test-thread2");
         thread2.start();
 
         new Thread(new Runnable() {
