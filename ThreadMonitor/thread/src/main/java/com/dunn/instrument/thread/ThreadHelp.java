@@ -16,23 +16,23 @@ import java.util.Set;
  * @Description:
  */
 public class ThreadHelp {
+    private static final String TAG = "ThreadHelp";
     private static Map<Integer, DeadLockThread> deadLocks = new HashMap<>();
 
     public static void monitorThreadInit(){
         int result = NativeThreadMonitor.nativeInit(Build.VERSION.SDK_INT);
-        Log.e("TAG","nativeInit -> "+result);
+        Log.i(TAG,"monitorThreadInit: nativeInit -> "+result);
         result = NativeThreadMonitor.monitorThread();
-        Log.e("TAG","monitorThread -> "+result);
+        Log.i(TAG,"monitorThreadInit: monitorThread -> "+result);
     }
 
     public static void monitorAllThread(){
-        // 输出所有的死锁信息，也不是腾讯内部的方案，也有可能是
         // 1. 获取所有的线程，Native 闪退的代码有
         Set<Thread> allThreads = NativeThreadMonitor.getAllThread();
         // 2. 对 BOLCKED 的线程获取锁信息
         for (Thread thread : allThreads) {
             if (thread.getState() == Thread.State.BLOCKED) {
-                Log.e("TAG", "thread -> " + thread.getName());
+                Log.i(TAG, "monitorAllThread: thread -> " + thread.getName());
                 // 当前线程在竞争锁，拿到 native thread 地址
                 long threadNativeAddress = (long) ReflectUtils.getFiledObject(thread, "nativePeer");
                 if (threadNativeAddress == 0) {
@@ -41,12 +41,12 @@ public class ThreadHelp {
                 // 获取到锁信息, 当前竞争锁，但是锁被其他线程占用了
                 int blockThreadId = NativeThreadMonitor.getContentThreadId(threadNativeAddress);
                 int currentThreadId = NativeThreadMonitor.getCurrentThreadId(threadNativeAddress, Build.VERSION.SDK_INT);
-                Log.e("TAG", "blockThreadId -> " + blockThreadId + " , currentThreadId -> " + currentThreadId);
+                Log.i(TAG, "monitorAllThread: blockThreadId -> " + blockThreadId + " , currentThreadId -> " + currentThreadId);
                 deadLocks.put(currentThreadId, new DeadLockThread(currentThreadId, blockThreadId, thread));
             }
         }
         // 3. 分析和输出所有线程的死锁信息
-        // 讲所有的情况进行分组
+        // 将所有的情况进行分组
         ArrayList<HashMap<Integer, Thread>> deadLockThreadGroup = deadLockThreadGroup();
         // 所有的死锁信息输出
         for (HashMap<Integer, Thread> group : deadLockThreadGroup) {
@@ -61,12 +61,12 @@ public class ThreadHelp {
                 }
                 Thread deadThread = group.get(deadLockThread.curThreadId);
 
-                Log.e("TAG","thread_name = "+deadThread.getName());
-                Log.e("TAG","wait_name = "+waitThread.getName());
+                Log.i(TAG,"monitorAllThread: thread_name = "+deadThread.getName());
+                Log.i(TAG,"monitorAllThread: wait_name = "+waitThread.getName());
 
                 StackTraceElement[] stackTraceElements = deadThread.getStackTrace();
                 for (StackTraceElement stackTraceElement : stackTraceElements) {
-                    Log.e("TAG", stackTraceElement.toString());
+                    Log.i(TAG, stackTraceElement.toString());
                 }
             }
         }
