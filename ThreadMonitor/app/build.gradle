@@ -5,20 +5,11 @@ android {
     buildToolsVersion "30.0.3"
     defaultConfig {
         applicationId "com.dunn.instrument.thread.sample"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-//        externalNativeBuild {
-//            cmake {
-//                cppFlags ""
-//            }
-//        }
-
-        ndk{
-            abiFilters "armeabi-v7a"
-        }
     }
     buildTypes {
         release {
@@ -26,15 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-//    externalNativeBuild {
-//        cmake {
-//            path "src/main/cpp/CMakeLists.txt"
-//        }
-//    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation project(path: ':thread')
+    implementation project(path: ':threadhook')
 }

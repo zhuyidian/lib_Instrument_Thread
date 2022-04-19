@@ -2,7 +2,6 @@ package com.dunn.instrument.thread;
 
 import android.os.Build;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,6 +18,10 @@ public class ThreadHelp {
     private static final String TAG = "ThreadHelp";
     private static Map<Integer, DeadLockThread> deadLocks = new HashMap<>();
 
+    /**
+     * 初始化
+     * 使用时机：App开始的时候就去初始化
+     */
     public static void monitorThreadInit(){
         int result = NativeThreadMonitor.nativeInit(Build.VERSION.SDK_INT);
         Log.i(TAG,"monitorThreadInit: nativeInit -> "+result);
@@ -26,6 +29,13 @@ public class ThreadHelp {
         Log.i(TAG,"monitorThreadInit: monitorThread -> "+result);
     }
 
+    /**
+     * 开始监控所有线程
+     * 使用时机：找合适的时机去监控线程
+     * 原理：
+     *  1,获取所有的线程(Native 闪退的代码有)
+     *  2,对 BOLCKED 的线程获取锁信息
+     */
     public static void monitorAllThread(){
         // 1. 获取所有的线程，Native 闪退的代码有
         Set<Thread> allThreads = NativeThreadMonitor.getAllThread();
