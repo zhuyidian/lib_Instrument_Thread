@@ -14,6 +14,10 @@ ThreadHelp.monitorAllThread();
 ```xml
 ThreadHookHelp.monitorThreadCreate();
 ```
+* 4，TAG过滤
+```xml
+ThreadHookHelp ThreadHelp ThreadMethodHook ThreadAlive
+```
 ## 2.项目引用
 * 1，root build.gradle中
 ```groovy
@@ -34,6 +38,7 @@ ndk{
 ## 3. 项目说明
 ```
 1，监控线程是否死锁
+2，线程CPU占用率监控
 2，监控线程创建和销毁
 ```
 ## 4.版本更新
