@@ -12,7 +12,6 @@ import com.dunn.instrument.thread.DeadLockThread;
 import com.dunn.instrument.thread.NativeThreadMonitor;
 import com.dunn.instrument.thread.ReflectUtils;
 import com.dunn.instrument.thread.ThreadHelp;
-import com.dunn.instrument.threadhook.ThreadHookHelp;
 
 
 import java.util.ArrayList;
