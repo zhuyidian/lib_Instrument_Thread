@@ -1,16 +1,16 @@
 # lib_Instrument_Thread
 
 ## 1.使用
-* 1，初始化
+* 1，初始化，建议在APP启动的时候就去初始化
 ```xml
 ThreadHelp.monitorThreadInit();
 ```
-* 2，开始一次监控
+* 2，开始一次监控，建议在用了一会之后，去获取一次。然后用一会儿再去获取一次。
 ```xml
 合适的位置去监控
 ThreadHelp.monitorAllThread();
 ```
-* 3，开始线程创建销毁监控
+* 3，开始线程创建销毁监控，建议在APP启动的时候就去监听
 ```xml
 ThreadHookHelp.monitorThreadCreate();
 ```
