@@ -16,7 +16,10 @@ ThreadHookHelp.monitorThreadCreate();
 ```
 * 4，TAG过滤
 ```xml
-ThreadHookHelp ThreadHelp ThreadMethodHook ThreadAlive
+线程死锁：ThreadHelp
+线程CPU占用监控：ThreadAlive
+线程创建销毁监控：直接使用远程依赖 ThreadHookHelp  ThreadMethodHook
+线程创建销毁监控：源码编译 ThreadHookSrcHelp  ThreadHookSrcMethod
 ```
 ## 2.项目引用
 * 1，root build.gradle中
