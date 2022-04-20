@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Set;
 
 import dalvik.system.DexFile;
-import de.robv.android.xposed.DexposedBridge;
 import de.robv.android.xposed.XC_MethodHook;
 
 /**

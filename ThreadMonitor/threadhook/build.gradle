@@ -44,7 +44,7 @@ dependencies {
 //    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
 //    implementation 'me.weishu.exposed:exposed-xposedapi:0.4.5'
 
-    //方式二：直接使用远程库
+    //方式二：直接使用远程库  https://github.com/tiann/epic
     api 'com.github.tiann:epic:0.11.2'
 
     //方式三：me.weishu ，在板子上直接崩溃

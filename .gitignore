@@ -19,6 +19,6 @@
 /ThreadMonitor/threadhook/build/
 /ThreadMonitor/threadhook/*.iml
 
-#library
-/ThreadMonitor/library/build/
-/ThreadMonitor/library/*.iml
+#threadhooksrc
+/ThreadMonitor/threadhooksrc/build/
+/ThreadMonitor/threadhooksrc/*.iml

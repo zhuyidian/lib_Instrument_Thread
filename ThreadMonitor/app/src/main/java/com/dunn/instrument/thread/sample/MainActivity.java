@@ -12,6 +12,7 @@ import com.dunn.instrument.thread.DeadLockThread;
 import com.dunn.instrument.thread.NativeThreadMonitor;
 import com.dunn.instrument.thread.ReflectUtils;
 import com.dunn.instrument.thread.ThreadHelp;
+import com.dunn.instrument.threadhooksrc.ThreadHookSrcHelp;
 
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ThreadHookHelp.monitorThreadCreate();
+        ThreadHookSrcHelp.monitorThreadCreate();
         ThreadHelp.monitorThreadInit();
 
         // Example of a call to a native method
