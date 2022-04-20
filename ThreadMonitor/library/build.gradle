@@ -1,0 +1,70 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+    maven {
+        url "https://jitpack.io"
+    }
+}
+group = 'com.github.zhuyidian.lib_Instrument'
+
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            // Specifies the ABI configurations of your native
+            // libraries Gradle should build and package with your APK.
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+        externalNativeBuild {
+            cmake {
+//                cppFlags "-std=c++11"
+                cppFlags ""
+                // arguments "-DANDROID_TOOLCHAIN=gcc"
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path 'src/main/cpp/CMakeLists.txt'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.github.tiann:FreeReflection:3.1.0"
+    api 'me.weishu.exposed:exposed-xposedapi:0.4.5'
+}
+
+//apply plugin: 'com.github.panpf.bintray-publish'
+//
+//publish {
+//    userOrg = 'twsxtd'//
+//    groupId = 'me.weishu'
+//    artifactId = 'epic'
+//    publishVersion = '0.11.1'
+//    desc = 'Android Java AOP Method Hook (Dexposed on ART)'
+//    website = 'https://github.com/tiann/epic'
+//}
+
