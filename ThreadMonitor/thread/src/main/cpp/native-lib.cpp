@@ -136,12 +136,12 @@ void* new_create_callback(void* arg) {
     long startTime = time(NULL);
     void* result = old_create_callback(arg);
     long alive_time = time(NULL) - startTime;
-    __android_log_print(ANDROID_LOG_ERROR, "TAG", "线程执行完毕，存活时间 -> %ldS",alive_time);
+    __android_log_print(ANDROID_LOG_ERROR, "ThreadAlive", "线程执行完毕，存活时间 -> %ldS",alive_time);
     // 获取 cpu 利用率，获取线程的名字，自己去折腾一下，网上也没有
     // 获取线程的名字？Native 崩溃再复习一下，有没有好的方案，网上是查不到的
     const char* thread_info = getThreadRunInfo();
     // cpu 的占用时间，线程占用时间/总时间，线程占用时间/进程的时间
-    __android_log_print(ANDROID_LOG_ERROR, "TAG", "thread info: %s", thread_info);
+    __android_log_print(ANDROID_LOG_ERROR, "ThreadAlive", "thread info: %s", thread_info);
     return result;
 }
 

@@ -37,6 +37,7 @@ public class ThreadHelp {
      *  2,对 BOLCKED 的线程获取锁信息
      */
     public static void monitorAllThread(){
+        Log.i(TAG, "monitorAllThread: ----------------线程死锁监控----start-----------------------");
         // 1. 获取所有的线程，Native 闪退的代码有
         Set<Thread> allThreads = NativeThreadMonitor.getAllThread();
         // 2. 对 BOLCKED 的线程获取锁信息
@@ -80,6 +81,7 @@ public class ThreadHelp {
                 }
             }
         }
+        Log.i(TAG, "monitorAllThread: ----------------线程死锁监控----end-----------------------\n");
     }
 
     private static ArrayList<HashMap<Integer, Thread>> deadLockThreadGroup() {

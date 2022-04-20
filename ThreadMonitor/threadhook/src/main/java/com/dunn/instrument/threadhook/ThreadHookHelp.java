@@ -34,6 +34,7 @@ public class ThreadHookHelp {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     super.afterHookedMethod(param);
+                    Log.i(TAG, "monitorThreadCreate: ----------------线程创建监控----start-----------------------");
                     mThreadCount++;
                     //当前thread
                     Thread thread = (Thread) param.thisObject;
@@ -45,6 +46,7 @@ public class ThreadHookHelp {
                         DexposedBridge.findAndHookMethod(clazz, "run", new ThreadMethodHook());
                     }
                     Log.d(TAG, "monitorThreadCreate: Thread=" + thread.getName() + ", class=" + thread.getClass() + ", is created..., mThreadCount="+mThreadCount);
+                    Log.i(TAG, "monitorThreadCreate: ----------------线程创建监控----end-----------------------\n");
                 }
             });
             DexposedBridge.findAndHookMethod(Thread.class, "run", new ThreadMethodHook());
