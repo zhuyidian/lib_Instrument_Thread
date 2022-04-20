@@ -5,10 +5,14 @@
 ```xml
 ThreadHelp.monitorThreadInit();
 ```
-* 2，测试native崩溃
+* 2，开始一次监控
 ```xml
 合适的位置去监控
 ThreadHelp.monitorAllThread();
+```
+* 3，开始线程创建销毁监控
+```xml
+ThreadHookHelp.monitorThreadCreate();
 ```
 ## 2.项目引用
 * 1，root build.gradle中
@@ -27,7 +31,12 @@ ndk{
     abiFilters "armeabi-v7a"
 }
 ```
-## 3.版本更新
+## 3. 项目说明
+```
+1，监控线程是否死锁
+2，监控线程创建和销毁
+```
+## 4.版本更新
 * V1.0.5
 ```
 首次成功运行版本
