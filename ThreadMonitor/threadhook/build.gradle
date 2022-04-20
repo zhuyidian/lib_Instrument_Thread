@@ -45,5 +45,8 @@ dependencies {
 //    implementation 'me.weishu.exposed:exposed-xposedapi:0.4.5'
 
     //方式二：直接使用远程库
-    implementation 'com.github.tiann:epic:0.11.2'
+    api 'com.github.tiann:epic:0.11.2'
+
+    //方式三：me.weishu ，在板子上直接崩溃
+    //implementation 'me.weishu:epic:0.3.6'
 }
