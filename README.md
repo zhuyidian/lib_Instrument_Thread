@@ -35,7 +35,7 @@ classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.8'
 * 2，module build.gradle中
 ```groovy
 apply plugin: 'android-aspectjx'
-implementation 'com.github.zhuyidian.lib_Instrument:excel:V1.1.8'
+implementation 'com.github.zhuyidian.lib_Instrument_Thread:thread:V1.1.5'
 ```
 * 3，module build.gradle中
 ```groovy
@@ -52,4 +52,8 @@ ndk{
 * V1.0.6
 ```
 线程cpu占用率监控
+```
+* V1.1.5
+```
+最新版本
 ```
