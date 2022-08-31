@@ -1,4 +1,4 @@
-# lib_Instrument_Thread
+# Thread
 
 ## 1.使用
 * 1，初始化，建议在APP启动的时候就去初始化
@@ -21,7 +21,13 @@ ThreadHookHelp.monitorThreadCreate();
 线程创建销毁监控：直接使用远程依赖 ThreadHookHelp  ThreadMethodHook
 线程创建销毁监控：源码编译 ThreadHookSrcHelp  ThreadHookSrcMethod
 ```
-## 2.项目引用
+## 2. 功能说明
+```
+1，监控线程是否死锁
+2，线程CPU占用率监控
+3，监控线程创建和销毁
+```
+## 3.项目引用
 * 1，root build.gradle中
 ```groovy
 classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.8'
@@ -37,12 +43,6 @@ implementation 'com.github.zhuyidian.lib_Instrument:excel:V1.1.8'
 ndk{
     abiFilters "armeabi-v7a"
 }
-```
-## 3. 项目说明
-```
-1，监控线程是否死锁
-2，线程CPU占用率监控
-3，监控线程创建和销毁
 ```
 ## 4.版本更新
 * V1.0.5
