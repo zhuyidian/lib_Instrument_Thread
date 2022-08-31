@@ -36,6 +36,7 @@ classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.8'
 ```groovy
 apply plugin: 'android-aspectjx'
 implementation 'com.github.zhuyidian.lib_Instrument_Thread:thread:V1.1.5'
+implementation 'com.github.zhuyidian.lib_Instrument_Thread:threadhooksrc:V1.1.5'
 ```
 * 3，module build.gradle中
 ```groovy
